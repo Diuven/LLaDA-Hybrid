@@ -1,0 +1,13 @@
+{
+  "base_model": "inclusionAI/LLaDA2.1-mini",
+  "architecture": "LLaDAFastForCausalLM",
+  "linear_layers": [0, 4, 8, 12, 16, 18],
+  "feature_dim": 64,
+  "share_hedgehog_kv_groups": false,
+  "block_size": 32,
+  "lora": {
+    "r": 16,
+    "alpha": 8,
+    "target_modules": ["query_key_value", "dense"]
+  }
+}

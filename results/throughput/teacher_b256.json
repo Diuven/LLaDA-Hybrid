@@ -1,0 +1,22 @@
+{
+  "model_path": "inclusionAI/LLaDA2.1-mini",
+  "batch_size": 256,
+  "gen_length": 2048,
+  "pool_size": 1024,
+  "seed": 42,
+  "passes": 1,
+  "tps": 2460.3,
+  "tps_mean": 2460.3,
+  "tps_all": [
+    2460.3
+  ],
+  "tps_sd": null,
+  "wall_seconds": 852.41,
+  "wall_all": [
+    852.41
+  ],
+  "tokens_total": 2097152,
+  "arm": "teacher",
+  "sglang": "rebuilt from sglang/llada-hybrid.patch",
+  "mem_fraction_static": 0.75
+}

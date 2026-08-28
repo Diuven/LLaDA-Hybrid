@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llada-hybrid"
+version = "0.1.0"
+description = "LLaDA 2.1-mini with block-softmax + Hedgehog linear attention on six layers"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = [
+  "torch>=2.6",
+  "transformers>=4.51",
+  "safetensors>=0.4",
+  "huggingface-hub",
+]
+
+[project.optional-dependencies]
+eval = ["datasets>=3.0"]
+
+[tool.setuptools]
+packages = ["llada_hybrid"]

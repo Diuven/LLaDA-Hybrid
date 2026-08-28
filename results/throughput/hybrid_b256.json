@@ -1,0 +1,22 @@
+{
+  "model_path": "checkpoints/llada-hybrid-6l (via scripts/prepare_model.py)",
+  "batch_size": 256,
+  "gen_length": 2048,
+  "pool_size": 1024,
+  "seed": 42,
+  "passes": 1,
+  "tps": 3985.7,
+  "tps_mean": 3985.7,
+  "tps_all": [
+    3985.7
+  ],
+  "tps_sd": null,
+  "wall_seconds": 526.17,
+  "wall_all": [
+    526.17
+  ],
+  "tokens_total": 2097152,
+  "arm": "hybrid",
+  "sglang": "rebuilt from sglang/llada-hybrid.patch",
+  "mem_fraction_static": 0.75
+}

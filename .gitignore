@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Built by scripts/prepare_model.py -- symlinks into the HF cache, not portable.
+/models/
+# Patched SGLang checkout created by sglang/apply.sh.
+/sglang-src/

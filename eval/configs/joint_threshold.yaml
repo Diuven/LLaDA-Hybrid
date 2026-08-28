@@ -1,0 +1,6 @@
+# JointThreshold decoder, threshold 0.7, editing disabled.
+# This is the configuration every reported number was measured with.
+threshold: 0.7
+edit_threshold: .inf     # T2T editing off
+max_post_edit_steps: 0
+block_size: 32
