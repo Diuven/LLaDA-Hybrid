@@ -11,7 +11,8 @@ entirely, so their cost of reaching prior context is independent of how much
 context there is.
 
 This repository ships the retrofitted weights, the PyTorch model definition, and
-the fused Triton kernel and SGLang patch used for the serving measurements.
+the SGLang source -- fused Triton kernel included -- that the serving
+measurements were taken on.
 
 ---
 
@@ -41,17 +42,18 @@ cd LLaDA-Hybrid
 pip install -e .
 ```
 
-Serving needs the patched SGLang. `sglang/apply.sh` clones upstream at the exact
-commit the measurements were taken on, applies the patch, and tells you how to
-install it:
+Serving needs the SGLang in `sglang/`, which is checked into this repository as
+source rather than as a patch: it is `sgl-project/sglang@2b47bd3a` (2026-03-23,
+between v0.5.9 and v0.5.10) with the hybrid backend, kernel and model class
+already in it, and it is the exact tree the numbers above were measured on.
 
 ```bash
-./sglang/apply.sh                 # clones + patches into ./sglang-src
-pip install -e sglang-src/python  # CUDA build, takes a while
+pip install -e sglang/python      # CUDA build, takes a while
 ```
 
-Base commit: `sgl-project/sglang@2b47bd3a` (2026-03-23, between v0.5.9 and
-v0.5.10). Measured with torch 2.9.1+cu128, transformers 4.57.1, Python 3.12; see
+`sglang/UPSTREAM.md` gives the base commit, the list of files that differ from
+upstream, and the one-line `diff -ru` that reproduces the full change set.
+Measured with torch 2.9.1+cu128, transformers 4.57.1, Python 3.12; see
 `requirements.txt`.
 
 ---
@@ -125,17 +127,18 @@ repository is inference and serving only.
 ```
 checkpoints/llada-hybrid-6l/   adapter.safetensors (13.4 MB) + adapter_config.json
 llada_hybrid/                  PyTorch model definition
-sglang/                        base commit pin, patch, apply.sh
+sglang/                        SGLang @2b47bd3a with the hybrid backend, as source
 eval/                          throughput measurement
 kernel/                        fused kernel vs pure-PyTorch reference
 scripts/                       build_adapter.py, prepare_model.py
-results/                       the JSON behind the reproduction above
+results/                       throughput JSON from this repository
 ```
 
-## What the SGLang patch changes
+## What this changes in SGLang
 
-19 files against the base commit; `sglang/llada-hybrid.patch` is the complete
-statement. The substantive parts:
+19 files differ from the base commit; `sglang/UPSTREAM.md` lists them all and
+shows how to diff the vendored tree against a clean upstream checkout. The
+substantive parts:
 
 - `srt/layers/attention/llada_fast_hybrid_kernel.py` — the fused Triton kernel. One
   launch computes the within-block softmax branch, the linear readout from the

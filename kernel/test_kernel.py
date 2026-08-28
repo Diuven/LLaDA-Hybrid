@@ -1,6 +1,6 @@
 """Correctness test for the fused hybrid attention kernel.
 
-The kernel under test is imported from the installed (patched) SGLang, so this
+The kernel under test is imported from the installed SGLang in sglang/, so this
 checks exactly what serving runs -- not a copy that can drift from it. It is
 compared against ``reference.py``, a pure-PyTorch implementation of the same
 math, over a sweep of batch sizes, prefix lengths and ragged-length cases.

@@ -23,7 +23,7 @@ import torch
 from torch import nn
 
 # The kernels under test are the ones SGLang actually serves, imported from the
-# installed (patched) SGLang rather than copied here -- a copy would drift.
+# installed SGLang (sglang/) rather than copied here -- a copy would drift.
 from sglang.srt.layers.attention.llada_fast_hybrid_kernel import (
     _hybrid_update_state_kernel_rw,
     _hybrid_output_kernel_streaming,

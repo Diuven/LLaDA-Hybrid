@@ -5,5 +5,3 @@ __pycache__/
 
 # Built by scripts/prepare_model.py -- symlinks into the HF cache, not portable.
 /models/
-# Patched SGLang checkout created by sglang/apply.sh.
-/sglang-src/

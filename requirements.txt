@@ -1,5 +1,5 @@
 # Versions these results were measured with (Python 3.12, CUDA 12.8, H200).
-# SGLang is installed separately from the patched source -- see sglang/apply.sh.
+# SGLang is installed separately from the source in sglang/ -- see sglang/UPSTREAM.md.
 torch==2.9.1
 transformers==4.57.1
 safetensors==0.7.0
