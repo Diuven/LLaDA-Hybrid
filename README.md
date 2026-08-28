@@ -31,30 +31,6 @@ Table 2 of the paper:
 | 128 | 2310.2 | 3994.4 | 1.73× |
 | 256 | 2350.3 | 3767.5 | 1.60× |
 
-Reproduced from this repository at 256 concurrent requests, one warmup and one
-measured pass per arm against the paper's two
-([`results/throughput/`](results/throughput)):
-
-| | teacher | hybrid | ratio |
-|---|---|---|---|
-| paper | 2350.3 | 3767.5 | 1.603 |
-| this repo | 2460.3 | 3985.7 | **1.620** |
-
-Both arms come out ~5% above the published figures — a uniform shift from a newer
-driver and PyTorch, three months on from the original runs — while the ratio,
-which is what the paper claims, agrees to 1.1%.
-
-Two things worth knowing before you read the table as a trend. Hybrid throughput
-**peaks at 64 concurrent requests** and declines through 128, 256 and beyond
-(3317.1 at 448, 2920.8 at 704), so 1.73× is a peak rather than the start of a
-curve. And the paper's rungs were measured as two blocks — all teacher, then all
-hybrid, spanning about four hours — rather than alternating, so any drift in that
-window lands in the ratio.
-
-The paper also reports isolated kernel latency (Table 3) and maximum resident
-batch under a 4096-token per-request footprint (Table 4: teacher 544, hybrid 704,
-with `mem_fraction_static` swept per model). Those are not reproduced here.
-
 ---
 
 ## Install
